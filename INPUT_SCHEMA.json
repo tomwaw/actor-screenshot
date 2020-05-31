@@ -1,0 +1,59 @@
+{
+    "title": "Input schema for Actor Screenshot URL",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "url": {
+            "title": "URL",
+            "type": "string",
+            "description": "What to search Kickstarter for",
+            "editor": "textfield",
+            "prefill": "https://www.apify.com/"
+        },
+        "selector": {
+            "title": "Selector",
+            "type": "string",
+            "description": "Selector",
+            "editor": "textfield",
+            "prefill": ""
+        },
+        "waitUntil": {
+            "title": "Wait until",
+            "type": "string",
+            "description": "Control's when will the browser take a screenshot",
+            "default": "All",
+            "enum": [
+                "load",
+                "domcontentloaded",
+                "networkidle2",
+                "networkidle0"
+            ],
+            "enumTitles": [
+                "Page is opened",
+                "Content of the page is loaded",
+                "Network is nearly idle",
+                "Network is idle"
+            ],
+            "editor": "select"
+        },
+        "delay": {
+            "title": "Delay before screenshot",
+            "type": "integer",
+            "description": "Add's delay before a screenshot is taken. Mimimum is 0, maximum is 5 minutes (3600000ms)",
+            "default": 0,
+            "minimum": 0,
+            "maximum": 3600000,
+            "unit": "ms"
+        },
+        "viewportWidth": {
+            "title": "Width",
+            "type": "integer",
+            "description": "How wide should the website's viewport be",
+            "default": 1280,
+            "minimum": 100,
+            "maximum": 3840,
+            "unit": "px"
+        }
+    },
+    "required": ["url", "waitUntil"]
+}
